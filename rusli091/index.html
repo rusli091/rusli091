@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE html PUBLIC '-//WAPFORUM//DTD XHTML Mobile 1.0//EN" 'http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+	<html lang="id">
+		<head>
+			<title>Web App Baterai Tercanggih Pertama di Indonesia</title>
+			<meta charset="UTF-16">
+			<meta name="viewport" content="width-device,width=1, initial-scale=1, maximal-scale=1">
+			<meta name="keywords" content="Web app baterai, App baterai, Baterai javascript, Baterai, Hardian baterai, Cek baterai, Cek baterai dan suhu">
+			<meta name="description" content="Web App Baterai Tercanggih No. 1 Indonesia: cek suhu & tegangan serta fitur canggih lainnya!">
+			<meta name="url" content="https://hardian98.github.io">
+			<meta name="identifier-URL" content="https://hardian98.github.io">
+			<meta name="google-site-verification" content="8rqg0Y6xJwqbouIX71Bif6BjvFE65ZSk6wUg4S-EJwg">
+			<meta name="robots" content="noindex, follow">
+			<meta name="rating" content="General">
+			<meta name="language" content="id">
+			<meta name="author" content="Hardiansyah">
+			<meta name="revised" content="Minggu, 29 Oktober, 2023">
+			<meta name="theme-color" content="#FFFFFF">
+			<meta http-equiv="refresh" content="500; url=index.html">
+			<!---->
+			<link rel="icon" href="icon.gif" type="image/gif" sizes="20x20">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr|Sen|Orbitron|Exo+2|Raleway|Prompt|Alata|Cabin+Sketch|Oxanium|Scada|Tilt+Neon|&display=swap">
+			<link rel="stylesheet" href="loader.css">
+			<link rel="stylesheet" href="baterai.style.css">
+			<!---->
+			<meta property="og:title" content="Pantau Batre Anda, Yuk!">
+			<meta property="og:description" content="Cek Suhu & Tegangan serta fitur canggih didalamnya!">
+			<meta property="og:image" content="https://raw.githubusercontent.com/hardian98/hardian98.github.io/main/image.jpg">
+			<meta property="og:type" content="article">
+			<!---->
+			<!--
+			<script type="text/javascript">
+			function setCookie(cname,cvalue,exdays) {
+				const d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				let expires = "expires=" + d.toUTCString();
+				document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+			function getCookie(cname) {
+				let name = cname + "=";
+				let decodedCookie = decodeURIComponent(document.cookie);
+				let ca = decodedCookie.split(';');
+				for(let i = 0; i < ca.length; i++) {
+					let c = ca[i];
+					while (c.charAt(0) == "") {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+			function checkCookie() {
+				let user = getCookie("username");
+				if (user != "") {
+					alert("Dateng lagi nih, " + user);
+					// document.getElementById("cookie").innerHTML = "Hallo, " + user;
+				} else {
+					user = prompt("Masukin Nama (digunakan untuk Cookie doang)","");
+					if (user != "" && user != null) {
+						setCookie("username", user, 30);
+					}
+				}
+			}
+			</script>
+			-->
+			<script type="text/javascript" src="cookie.js"></script>
+		</head>
+		
+		<body onload="window.setTimeout('getSecs()',1);checkCookie();loadDoc()">
+			<!-- Memulai Program... -->
+			<main>
+				<script> <!-- LLVM -->
+				printBattery (void const* buffer) {
+					Battery const* Battery = (Battery const*) buffer;
+					print ($"Batt version = $(Battery.m_version)\n“);
+					if (Battery.m_status == BATTSTATUS_SCRIPT) {
+						buffer += Battery.m_headerLength * 4;
+						Data const* Data = (Data const*) buffer;
+						print ($“SCRIPT type = $(Data.m_type)\n“);
+					}
+				}
+				</script>
+				<script> <!-- Mithril JS -->
+				import m from "mithril";
+				import id from "./services/id";
+				import { setLocaleFromRoute } from "./services/idRouting";
+				import Layout from "./Layout/Layout";
+				const App = {
+					oncreate: setLocaleFromRoute,
+					onupdate: setLocaleFromRoute,
+					view(vnode) {
+						return id.status === "Menghitung. . ."
+						? m("p", "Menghitung. . .")
+						: m(Layout, vnode.children);
+					},
+				};
+				export default App;
+				</script>
+				<script> <!-- AJAX Server Response -->
+				function loadDoc() {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							document.getElementByTagName("body").innerHTML = this.responseText;
+						}
+					};
+					xhttp.open("GET", "data.json", true);
+					xhttp.send();
+				}
+				</script>
+				<!-- Sudah Ok -->
+			</main>
+			
+			<footer>
+				<p onclick="writer_01()">Bagaimana website ini bekerja? <i class="fa fa-terminal"></i></p>
+				<p id="typing_01" class="textwr"></p>
+				<script>
+					var satu = 0;
+					var txt01 = "Saya menggunakan program API Javascript untuk mengetahui informasi terkait yang dibutuhkan untuk menjalankan program ini.\nSemua yang ditampilkan dalam Website ini adalah aman dan tidak ada data yang dicuri.\nPembacaan informasi baterai dan perangkat adalah fitur dari Application Programming Interface (API) yang diberdayakan oleh Javascript.\nSaya berani jamin tidak ada data yang dicuri dan Saya siap dilaporkan ke Pihak Berwajib jika terbukti melakukan pencurian data."; /* The text */
+					var speed1 = 50;
+					function writer_01() {
+						if (satu < txt01.length) {
+							document.getElementById("typing_01").innerHTML += txt01.charAt(satu);
+							satu++;
+							setTimeout(writer_01, speed1);
+						}
+					}
+				</script>
+				
+				<hr width='6%' color='#DDD' size='1px'/>
+				
+				<p onclick="writer_02()">Cara Kerja? <i class="fa fa-terminal"></i></p>
+				<p id="typing_02" class="textwr"></p>
+				<script>
+					var dua = 0;
+					var txt02 = "Saat sumber daya tersambung, program akan membaca tegangan masuk dan memperkirakan berapa lama waktu yang dibutuhkan hingga baterai terisi penuh.\nFitur: “Pengisian Cepat” akan mengambil arus daya lebih tinggi dari Adaptor namun dengan batas toleransi aman.\nFitur: “Baterai Adaptif” akan membatasi Aplikasi yang berjalan di latar belakang agar tidak mengonsumsi lebih banyak daya.\nFitur: “Stabilkan Tegangan” akan mengubah arus masuk menjadi lebih stabil untuk mendapatkan arus amper yang tinggi.\n"; /* The text */
+					var speed2 = 50;
+					function writer_02() {
+						if (satu < txt02.length) {
+							document.getElementById("typing_02").innerHTML += txt02.charAt(dua);
+							dua++;
+							setTimeout(writer_02, speed2);
+						}
+					}
+				</script>
+				
+				<hr width='50%' color='#DDD' size='1px'/>
+				
+				<p>Web ini sudah dikembangkan 2 tahun lalu.<br/>
+				Dirilis pada 15 September, 2023, dan berjalan lamanya:<br/>
+				<span id="umur">
+					<span class="bulan"></span> Bulan
+					<br>
+					(<span class="hari"></span> hari, <span class="jam"></span> jam, <span class="mnt"></span> mnt, <span class="dtk"></span> dtk)
+				</span></p>
+				
+				<img src="IMG-20231201-WA0005.jpg" style="display: block; margin: 0 auto; object-fit: cover; width: 7rem; height: 7rem; border: 1px solid #FFF; border-radius: 50%">
+				
+				<p class="programmer">Dibuat oleh: Hardiansyah<br/>
+				&copy;2021-2023<br/>
+				Versi: 4.08</p>
+				
+				<a href="https://m.facebook.com/acces.py"><i class="fa fa-facebook"></i></a> <a href="https://wa.me/6289529305947"><i class="fa fa-whatsapp"></i></a>
+				
+				<hr width='50%' color='#DDD' size='1px'/>
+				
+				<script type="text/javascript">
+				<!-- Begin
+				document.write("<p>Kamu sudah berkunjung <b>" + amt() + "</b> kali.</p>")
+				// End -->
+				</script>
+				
+				<bdo>
+					<a href="index.html"><i class="fa fa-check"></i> Indonesia</a>
+					<a href="lang_en.html">| English</a>
+					<!--<a href="lang_euy.html">Sunda</a>
+					<a href="lang_uk.html">English</a>
+					<a href="lang_jp.html">Japan</a>
+					<a href="lang_kr.html">Korean</a>
+					<a href="lang_ch.html">Chinesse</a>
+					<a href="lang_th.html">Thailand</a>
+					<a href="lang_za.html">Afrikaans</a>-->
+				</bdo>
+				
+				<hr width="100%" color="#BBB" size="1px"/>
+				
+				<p class="thanks">Terimakasih:<br>W3SCHOOL | STACKOVERFLOW | ChatGPT | medium.com | developer.mozilla.org | Google Font | Google Icon | Font Awesome</p>
+				<p><i class="fa fa-android"></i> • <i class="fa fa-apple"></i> • <i class="fa fa-windows"></i><br><i class="fa fa-chrome"></i> • <i class="fa fa-edge"></i> • <i class="fa fa-opera"></i> • <i class="fa fa-firefox"></i> • <i class="fa fa-github"></i><br><i class="fa fa-html5"></i> • <i class="fa fa-css3"></i></p>
+			</footer>
+			
+			<a href="#tabel" onclick="nav()" class="fa fa-arrow-down bawah"></a>
+			<a href="#top" onclick="nav()" class="fa fa-arrow-up atas"></a>
+			
+			<script src="jquery.js"></script>
+			<script>
+			$(document).ready(function() {
+				setTimeout(function(){
+					$('body').addClass('loaded');
+				}, 2500);
+			});
+			</script>
+			<script src="detektor.js"></script>
+			<script src="mithril.js"></script>
+			<script src="time.js"></script>
+		</body>
+	</html>
